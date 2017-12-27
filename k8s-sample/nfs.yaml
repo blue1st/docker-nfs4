@@ -40,6 +40,6 @@ spec:
     - port: 111 
       protocol: UDP 
       name: portmapper
-  clusterIP: # edit this 
+  clusterIP: # edit or remove 
   selector:
     app: nfs-node
