@@ -1,0 +1,25 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: app 
+spec:
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        app: app-node
+    spec:
+      containers:
+        - name: app
+          image: alpine
+          command:
+            - tail
+            - -f
+            - /dev/null
+          volumeMounts:
+            - name: nfs-dir
+              mountPath: /share
+      volumes:
+        - name: nfs-dir
+          persistentVolumeClaim:
+            claimName: nfs-claim
